@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test-Networking-Stuff", "Library\Test-Networking-Stuff.csproj", "{8CC8309B-C891-4A00-A6EB-3857BE5A74A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj", "{5EA68F99-1F1E-4E5B-BBF5-4CD366D34462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{1D8EAC5F-B226-44BF-8896-00FF90365804}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CC8309B-C891-4A00-A6EB-3857BE5A74A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC8309B-C891-4A00-A6EB-3857BE5A74A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC8309B-C891-4A00-A6EB-3857BE5A74A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC8309B-C891-4A00-A6EB-3857BE5A74A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA68F99-1F1E-4E5B-BBF5-4CD366D34462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA68F99-1F1E-4E5B-BBF5-4CD366D34462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA68F99-1F1E-4E5B-BBF5-4CD366D34462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA68F99-1F1E-4E5B-BBF5-4CD366D34462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8EAC5F-B226-44BF-8896-00FF90365804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8EAC5F-B226-44BF-8896-00FF90365804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8EAC5F-B226-44BF-8896-00FF90365804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8EAC5F-B226-44BF-8896-00FF90365804}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
