@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test", "Network-Test\Network-Test.csproj", "{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1} = {CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test.Fody", "Network-Test.Fody\Network-Test.Fody.csproj", "{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>Network_Test</RootNamespace>
+        <OutputPath>$(SolutionDir)../nugets</OutputPath>
+        <Version>1.0.1</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fody" Version="6.8.2">
+        <PrivateAssets>none</PrivateAssets>
+      </PackageReference>
+      <PackageReference Include="FodyPackaging" Version="6.8.2" PrivateAssets="All"/>
+    </ItemGroup>
+
+</Project>

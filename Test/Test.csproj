@@ -9,11 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Library\Test-Networking-Stuff.csproj" />
+      <PackageReference Include="Network-Test.Fody" Version="1.0.1" />
     </ItemGroup>
-
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="&quot;$(SolutionDir)Build\bin\Debug\net6.0\Build.exe&quot; &quot;$(TargetPath)&quot;" />
-    </Target>
 
 </Project>
