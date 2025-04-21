@@ -76,7 +76,7 @@ namespace Network_Test.Fody.Core
                 throw new WeavingException("rpc must be public static void!");
             }
 
-            if (isClient && (md.Parameters.Count == 0 || md.Parameters[0].ParameterType != ModuleWeaver.ClientNetworkConnectionType))
+            if (isClient && (md.Parameters.Count == 0 || !md.Parameters[0].ParameterType.EqualsTo(ModuleWeaver.ClientNetworkConnectionType)))
             {
                 throw new WeavingException($"Client rpc [{md.FullName}] must have first parameter be of type [ClientNetworkConnection] that must not be used inside the method.");
             }
@@ -173,7 +173,7 @@ namespace Network_Test.Fody.Core
             il.Append(tryStart);
             
             WriteHeader(il, netWriterVar, hash);
-            WriteArguments(il, netWriterVar, md, callType == CallType.Client);
+            WriteArguments(il, netWriterVar, md, callType);
             
             il.Emit(OpCodes.Call, _networkManagerInstanceGetter); //networkManager instance loaded
             
@@ -239,11 +239,12 @@ namespace Network_Test.Fody.Core
                 MethodAttributes.HideBySig,
                 ModuleWeaver.TypeSystem.Void);
             
+            invokeMethod.Parameters.Add(new ParameterDefinition("senderConn", ParameterAttributes.None, md.Module.ImportReference(ModuleWeaver.ClientNetworkConnectionType)));
             invokeMethod.Parameters.Add(new ParameterDefinition("reader", ParameterAttributes.None, md.Module.ImportReference(ModuleWeaver.NetworkReaderType)));
             
             ILProcessor il = invokeMethod.Body.GetILProcessor();
             
-            ReadArguments(il, md, callType == CallType.Client);
+            ReadArguments(il, md, callType);
             
             il.Emit(OpCodes.Call, userRpc);
             il.Emit(OpCodes.Ret);
@@ -275,17 +276,28 @@ namespace Network_Test.Fody.Core
         }
 
         static void WriteArguments(ILProcessor ilProcessor, VariableDefinition netWriterVar,
-            MethodDefinition md, bool isClientRpc)
+            MethodDefinition md, CallType callType)
         {
             int argCount = 0;
             foreach (var parameterDefinition in md.Parameters)
             {
-                if (argCount == 0 && isClientRpc)
+                if (argCount == 0 && callType == CallType.Client)
                 {
                     argCount++;
                     continue;
                 }
 
+                if (parameterDefinition.ParameterType.EqualsTo(ModuleWeaver.ClientNetworkConnectionType))
+                {
+                    if (callType == CallType.Server)
+                    {
+                        argCount++;
+                        continue;
+                    }
+                    
+                    throw new WeavingException($"[{md.FullName}] Tried to make non server rpc with a Client Connection Parameter, this is not allowed");
+                }
+                
                 var writerFunc = ReadersWriters.GetWriterMethod(parameterDefinition.ParameterType);
                 
                 ilProcessor.Emit(OpCodes.Ldloc, netWriterVar); //load this networkWriter for extension
@@ -297,20 +309,27 @@ namespace Network_Test.Fody.Core
         }
 
         static void ReadArguments(ILProcessor ilProcessor,
-            MethodDefinition md, bool isClientRpc)
+            MethodDefinition md, CallType callType)
         {
+            bool skipFirst = callType == CallType.Client;
             foreach (var parameterDefinition in md.Parameters)
             {
-                if (isClientRpc) //skip first param
+                if (skipFirst) //skip first param
                 {
                     ilProcessor.Emit(OpCodes.Ldnull);
-                    isClientRpc = false;
+                    skipFirst = false;
+                    continue;
+                }
+
+                if (parameterDefinition.ParameterType.EqualsTo(ModuleWeaver.ClientNetworkConnectionType))
+                {
+                    ilProcessor.Emit(OpCodes.Ldarg_0);
                     continue;
                 }
                 
                 var readerMethod = ReadersWriters.GetReaderMethod(parameterDefinition.ParameterType);
                 
-                ilProcessor.Emit(OpCodes.Ldarg_0); //load this networkReader for extension
+                ilProcessor.Emit(OpCodes.Ldarg_1); //load this networkReader for extension
                 ilProcessor.Emit(OpCodes.Call, readerMethod);
             }
         }

@@ -1,4 +1,5 @@
-﻿using Network_Test.Core.Rpc;
+﻿using Network_Test.Core;
+using Network_Test.Core.Rpc;
 using Console = System.Console;
 
 namespace FodyTest;
@@ -12,7 +13,7 @@ public class Class1
     }
 
     [ClientRpc]
-    public static void TakaDamagge()
+    public static void TakaDamagge(ClientNetworkConnection conn)
     {
         //siht here
     }

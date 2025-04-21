@@ -8,7 +8,7 @@ namespace Network_Test
     {
         public static Transport Instance { get; set; }
         
-        public bool IsActive { get; internal set; }
+        public bool IsActive { get; protected set; }
         
         //CLIENT
         public Action<ArraySegment<byte>> OnClientDataReceived;

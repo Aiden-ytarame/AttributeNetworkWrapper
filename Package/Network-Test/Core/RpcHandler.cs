@@ -20,7 +20,7 @@ public static class RpcHandler
     }
     
     
-    public delegate void RpcDelegate(NetworkReader reader);
+    public delegate void RpcDelegate(ClientNetworkConnection conn, NetworkReader reader);
     static Dictionary<ushort, Invoker> RpcInvokers = new();
 
     static RpcHandler()

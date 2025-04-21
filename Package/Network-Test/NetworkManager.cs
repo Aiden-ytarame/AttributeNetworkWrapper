@@ -8,12 +8,15 @@ namespace Network_Test
     public class NetworkManager
     {
         public static NetworkManager Instance { get; private set; }
+        public bool TransportActive => Transport.IsActive;
         
         protected ServerNetworkConnection? _serverConnection;
         protected Dictionary<int, ClientNetworkConnection> _clientConnections = new();
-
-        bool _eventsSet = false;
         protected Transport Transport => Transport.Instance;
+        
+        bool _eventsSet = false;
+        
+        
 
         ~NetworkManager()
         {
@@ -121,7 +124,7 @@ namespace Network_Test
             {
                 if (rpcHandler.CallType != RpcHandler.CallType.Server)
                 {
-                    rpcHandler.RpcFunc.Invoke(reader);
+                    rpcHandler.RpcFunc.Invoke(null, reader);
                 }
                 else
                 {
@@ -134,6 +137,16 @@ namespace Network_Test
             }
         }
         //server
+        public virtual void StartServer()
+        {
+            Transport.StartServer();
+        }
+
+        public virtual void EndServer()
+        {
+            Transport.StopServer();
+        }
+        
         public virtual void OnServerClientDisconnected(ClientNetworkConnection connection)
         {
             _clientConnections.Remove(connection.ConnectionId);
@@ -188,7 +201,7 @@ namespace Network_Test
             {
                 if (rpcHandler.CallType == RpcHandler.CallType.Server)
                 {
-                    rpcHandler.RpcFunc.Invoke(reader);
+                    rpcHandler.RpcFunc.Invoke(connection, reader);
                 }
                 else
                 {
