@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <DisableFody>true</DisableFody>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <Reference Include="Facepunch.Steamworks.Win64">
+        <HintPath>D:\Downloads\UnityPorted\MODS\PAGit\PAMultiplayer\PAMultiplayer\lib\Facepunch.Steamworks.Win64.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Fody" Version="6.9.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>

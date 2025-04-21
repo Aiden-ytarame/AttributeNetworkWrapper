@@ -2,9 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>Network_Test</RootNamespace>
         <OutputPath>$(SolutionDir)../nugets</OutputPath>
-        <Version>1.0.1</Version>
+        <Version>1.0.4</Version>
+        <LangVersion>latest</LangVersion>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,4 +15,6 @@
       <PackageReference Include="FodyPackaging" Version="6.8.2" PrivateAssets="All"/>
     </ItemGroup>
 
+   
+    
 </Project>

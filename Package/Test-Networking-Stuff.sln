@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test", "Network-Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test.Fody", "Network-Test.Fody\Network-Test.Fody.csproj", "{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1E55C848-F124-4806-A7F4-4674A6DEF831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FodyTest", "FodyTest\FodyTest.csproj", "{F7C92A23-9FE3-48B8-9CE3-A2137FDF37CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,5 +25,13 @@ Global
 		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E55C848-F124-4806-A7F4-4674A6DEF831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E55C848-F124-4806-A7F4-4674A6DEF831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E55C848-F124-4806-A7F4-4674A6DEF831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E55C848-F124-4806-A7F4-4674A6DEF831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C92A23-9FE3-48B8-9CE3-A2137FDF37CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C92A23-9FE3-48B8-9CE3-A2137FDF37CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C92A23-9FE3-48B8-9CE3-A2137FDF37CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C92A23-9FE3-48B8-9CE3-A2137FDF37CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

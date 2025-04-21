@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Network-Test/1.0.1": {
+      "Network-Test/1.0.4": {
         "dependencies": {
           "Fody": "6.8.2",
           "FodyPackaging": "6.8.2",
@@ -28,7 +28,7 @@
     }
   },
   "libraries": {
-    "Network-Test/1.0.1": {
+    "Network-Test/1.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <RootNamespace>Network_Test.Fody</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

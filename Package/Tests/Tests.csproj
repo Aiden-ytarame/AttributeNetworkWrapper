@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <DisableFody>true</DisableFody>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FodyHelpers" Version="6.9.0" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+      <PackageReference Include="xunit" Version="2.9.2" />
+      <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0-pre.49">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Network-Test.Fody\Network-Test.Fody.csproj" />
+      <ProjectReference Include="..\Network-Test\Network-Test.csproj" />
+    </ItemGroup>
+
+</Project>
