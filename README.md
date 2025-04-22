@@ -2,7 +2,7 @@
 
 This is a Fody weaver addin, which runs on build to modify the IL of the project.
  
-A lot of this took inspiration from Mirror, the networking library for unity.
+A lot of this took inspiration from Mirror, the networking library for unity. I thought that would be cool if something like that was usable outside of unity, so here we are.
 
 ## Use
 
