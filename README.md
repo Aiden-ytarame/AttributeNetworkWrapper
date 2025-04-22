@@ -6,7 +6,7 @@ This is a Fody weaver addin, which runs on build to modify the IL of the project
 
 This calls a bunch of abstract functions that you, the user must override to handle sending messages, and calling certain functions on receive.
 
-Classes that you must override is the NetworkManager and Transport.
+Classes that you must override are NetworkManager and Transport.
 
 You call rpcs by using either Server/Client/Multi Rpc Attribute:
 ```csharp
