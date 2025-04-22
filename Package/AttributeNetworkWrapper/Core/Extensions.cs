@@ -2,7 +2,7 @@ namespace AttributeNetworkWrapper.Core;
 
 public static class Extensions
 {
-    //fnv1a hashing folded to 16bits
+    //fnv1a hashing folded to 16bits, used to get function hashes
     public static ushort GetStableHashCode(this string text)
     {
         unchecked

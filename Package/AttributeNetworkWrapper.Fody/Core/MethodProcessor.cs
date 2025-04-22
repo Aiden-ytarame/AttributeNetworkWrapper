@@ -6,6 +6,9 @@ using Mono.Cecil.Cil;
 
 namespace AttributeNetworkWrapper.Fody.Core
 {
+    /// <summary>
+    /// Functions to process methods IL
+    /// </summary>
     public static class Processor
     {
         public enum CallType
@@ -27,7 +30,7 @@ namespace AttributeNetworkWrapper.Fody.Core
         }
         static Dictionary<ushort, RpcInvoker> _rpcInvokers = new Dictionary<ushort, RpcInvoker>();
         
-        //functions we use everywhere
+        //caching functions we use everywhere
         private static MethodReference _dispose;
         private static MethodReference _networkManagerInstanceGetter;
         private static MethodReference _netManagerSendToServer;
@@ -136,6 +139,7 @@ namespace AttributeNetworkWrapper.Fody.Core
                 userRpc.Parameters.Add(parameterDefinition);
             }
             
+            //substitute the bodies
             (userRpc.Body, md.Body) = (md.Body, userRpc.Body);
             
             // thanks mirror!
@@ -154,6 +158,13 @@ namespace AttributeNetworkWrapper.Fody.Core
 
             md.Body.InitLocals = true;
             ILProcessor il = md.Body.GetILProcessor();
+            
+            var ret = il.Create(OpCodes.Ret);
+            
+            il.Emit(OpCodes.Call, _networkManagerInstanceGetter);
+            il.Emit(OpCodes.Brfalse, ret);
+            
+            
             VariableDefinition netWriterVar = GenerateMakeNetworkWriter(il, md);
             
             //for a using(networkWriter writer) { } since its a IDisposable
@@ -162,11 +173,7 @@ namespace AttributeNetworkWrapper.Fody.Core
             var finallyStart = il.Create(OpCodes.Ldloc, netWriterVar);
             var finallyEnd = il.Create(OpCodes.Nop);
             var preEndFinally = il.Create(OpCodes.Nop);
-            var ret = il.Create(OpCodes.Ret);
             
-            
-            il.Emit(OpCodes.Call, _networkManagerInstanceGetter);
-            il.Emit(OpCodes.Brfalse, ret);
             
             //body of using()
             il.Append(tryStart);
@@ -228,6 +235,7 @@ namespace AttributeNetworkWrapper.Fody.Core
             return userRpc;
         }
 
+        //Writes a function that invokes the User Code, this function is put then registered as a delegate and called on runtime
         static MethodDefinition GenerateRpcInvoke(MethodDefinition md, MethodDefinition userRpc, CallType callType)
         {
             MethodDefinition invokeMethod = new MethodDefinition($"InvokeUserCode_{md.Name}", 
@@ -263,6 +271,7 @@ namespace AttributeNetworkWrapper.Fody.Core
             return variableDefinition;
         }
 
+        //writes function hash
         static void WriteHeader(ILProcessor il, VariableDefinition netWriterVar, ushort hash)
         {
             il.Emit(OpCodes.Ldloc, netWriterVar);
@@ -279,7 +288,7 @@ namespace AttributeNetworkWrapper.Fody.Core
             int argCount = 0;
             foreach (var parameterDefinition in md.Parameters)
             {
-                if (argCount == 0 && callType == CallType.Client)
+                if (argCount == 0 && callType == CallType.Client) //ClientConnection is not send to clients
                 {
                     argCount++;
                     continue;
@@ -287,7 +296,7 @@ namespace AttributeNetworkWrapper.Fody.Core
 
                 if (parameterDefinition.ParameterType.EqualsTo(ModuleWeaver.ClientNetworkConnectionType))
                 {
-                    if (callType == CallType.Server)
+                    if (callType == CallType.Server) //Server function that requested sender ClientConnection
                     {
                         argCount++;
                         continue;
@@ -332,6 +341,7 @@ namespace AttributeNetworkWrapper.Fody.Core
             }
         }
         
+        //generates a new class, with a static constructor that calls RpcHandler.RegisterRpc on runtime.
         public static void WriteRpcsToConstructor()
         {
             TypeDefinition registerFuncsType =
@@ -360,10 +370,10 @@ namespace AttributeNetworkWrapper.Fody.Core
             
             foreach (var invoker in _rpcInvokers)
             {
-                il.Emit(OpCodes.Ldc_I4, invoker.Key);
-                il.Emit(OpCodes.Ldnull);
-                il.Emit(OpCodes.Ldftn, invoker.Value.Method);
-                il.Emit(OpCodes.Newobj, delegateCtor);
+                il.Emit(OpCodes.Ldc_I4, invoker.Key); //Hash
+                il.Emit(OpCodes.Ldnull); //Object of the delegate, its a static function so we load null
+                il.Emit(OpCodes.Ldftn, invoker.Value.Method); 
+                il.Emit(OpCodes.Newobj, delegateCtor); //creates a delegate
                 il.Emit(OpCodes.Ldc_I4, (int)invoker.Value.CallType);
                 il.Emit(OpCodes.Call, registerFunc);
             }

@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace AttributeNetworkWrapper.Core;
 
+/// <summary>
+/// Handles registering and calling received Rpc's.
+/// </summary>
 public static class RpcHandler
 {
     public enum CallType
@@ -25,6 +28,8 @@ public static class RpcHandler
 
     static RpcHandler()
     {
+        //on build we generate this type, its static constructor calls RpcHandler.RegisterRpc() for all rpc's declared on it.
+        //here we make sure their static constructor has ran
         Type registerRpcs = null;
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {

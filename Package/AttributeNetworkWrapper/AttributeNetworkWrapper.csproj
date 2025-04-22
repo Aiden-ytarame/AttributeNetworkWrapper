@@ -6,6 +6,12 @@
         <Version>1.0.4</Version>
         <LangVersion>latest</LangVersion>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <Title>AttributeNetworkWrapper.Fody</Title>
+        <Authors>Aiden_Ytarame</Authors>
+        <Description>Rpc attributes like [ServerRpc] used to serialize arguments and call abstract functions, which the user has to handle however they want. On receive the function is called with Deserialized params</Description>
+        <RepositoryUrl>https://github.com/Aiden-ytarame/AttributeNetworkWrapper/</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>ILWeaving, Fody, Cecil, AOP, Networking</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

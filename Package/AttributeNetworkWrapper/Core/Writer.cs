@@ -4,6 +4,9 @@ using System.Text;
 
 namespace AttributeNetworkWrapper.Core
 {
+    /// <summary>
+    /// Responsible for writing network data for calling Rpc's
+    /// </summary>
     public class NetworkWriter : IDisposable
     {
         static MemoryStream _memoryStream = new MemoryStream(1024);
@@ -26,6 +29,10 @@ namespace AttributeNetworkWrapper.Core
         }
     }
 
+    
+    /// <summary>
+    /// On build we detect all extensions for writers to use for serializing parameters
+    /// </summary>
     public static class NetWriterExtensions
     {
         public static void Write(this NetworkWriter nw, bool value) => nw.BinaryWriter.Write(value);

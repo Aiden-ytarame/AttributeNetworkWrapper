@@ -4,24 +4,43 @@ using AttributeNetworkWrapper.Core;
 
 namespace AttributeNetworkWrapper
 {
+    /// <summary>
+    /// Singleton responsible for forwarding rpc calls to the Transport and Handling received messages
+    /// Theres many virtual functions for methods like OnClientConnected, just make sure to call base.function() on any overrides.
+    /// </summary>
     public class NetworkManager
     {
+        /// <summary>
+        /// Singleton of the current NetworkManager
+        /// </summary>
         public static NetworkManager Instance { get; private set; }
+        /// <summary>
+        /// Simply calls Transport.IsActive
+        /// </summary>
         public bool TransportActive => Transport.IsActive;
         
         protected ServerNetworkConnection? _serverConnection;
         protected Dictionary<int, ClientNetworkConnection> _clientConnections = new();
+        
+        
+        /// <summary>
+        /// Calls Transport.Instance
+        /// </summary>
         protected Transport Transport => Transport.Instance;
         
         bool _eventsSet = false;
         
-        
-
         ~NetworkManager()
         {
             DeSetupEvents();
         }
         
+        /// <summary>
+        /// Inits this networkManager, must be called before use.
+        /// Fails if an Instance already exists.
+        /// </summary>
+        /// <param name="transport">Transport instance to use</param>
+        /// <returns>successfully init</returns>
         public bool Init(Transport transport)
         {
             if (Instance != null)
@@ -73,7 +92,7 @@ namespace AttributeNetworkWrapper
             _eventsSet = false;
         }
         
-        //client
+        // CLIENT ////////////////////////////////
         public virtual void ConnectToServer(string address)
         {
             Transport.ConnectClient(address);

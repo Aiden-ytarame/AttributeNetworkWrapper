@@ -5,6 +5,9 @@ using Mono.Cecil;
 
 namespace AttributeNetworkWrapper.Fody.Core
 {
+    /// <summary>
+    /// Holds a list of all found reader/writer extensions
+    /// </summary>
     public static class ReadersWriters
     {
         private static readonly Dictionary<string, MethodReference> WriterFunctions =
