@@ -35,6 +35,7 @@ public static void Server_DoStuff(int param1, bool param2)
       NetworkManager.Instance.SendRpcToServer(writer);
 }
 ```
+Note, all rpc's MUST be 'public static void'
 
 Now when this function gets called, it instead sends the rpc to the Server, where it then will be called with the suplied params.
 
