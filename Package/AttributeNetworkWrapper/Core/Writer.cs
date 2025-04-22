@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Network_Test.Core
+namespace AttributeNetworkWrapper.Core
 {
     public class NetworkWriter : IDisposable
     {

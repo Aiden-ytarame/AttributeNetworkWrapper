@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Network-Test.Fody" Version="1.0.4"/>
+      <PackageReference Include="AttributeNetworkWrapper.Fody" Version="1.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AttributeNetworkWrapper\AttributeNetworkWrapper.csproj" />
     </ItemGroup>
 
 </Project>

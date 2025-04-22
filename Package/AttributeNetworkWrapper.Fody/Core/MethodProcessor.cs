@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using Fody;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
-using Network_Test.Fody.Extensions;
 
-namespace Network_Test.Fody.Core
+namespace AttributeNetworkWrapper.Fody.Core
 {
     public static class Processor
     {
@@ -177,15 +176,14 @@ namespace Network_Test.Fody.Core
             
             il.Emit(OpCodes.Call, _networkManagerInstanceGetter); //networkManager instance loaded
             
-            il.Emit(OpCodes.Ldloc, netWriterVar); //loads writer
-            
             if (callType == CallType.Client)
             {
                 il.Emit(OpCodes.Ldarg_0); //ClientConnection
             }
             
-            il.Emit(OpCodes.Call, _writerGetData); //calls get data from writer
+            il.Emit(OpCodes.Ldloc, netWriterVar); //loads writer
             
+            il.Emit(OpCodes.Call, _writerGetData); //calls get data from writer
             
             il.Emit(OpCodes.Ldc_I4, attribute.GetSendType());
             
@@ -337,7 +335,7 @@ namespace Network_Test.Fody.Core
         public static void WriteRpcsToConstructor()
         {
             TypeDefinition registerFuncsType =
-                new TypeDefinition("Network_Test", "RpcFuncRegistersGenerated", 
+                new TypeDefinition("AttributeNetworkWrapper", "RpcFuncRegistersGenerated", 
                     TypeAttributes.Class |
                     TypeAttributes.Abstract |
                     TypeAttributes.Sealed, ModuleWeaver.TypeSystem.Object);

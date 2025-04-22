@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test", "Network-Test\Network-Test.csproj", "{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeNetworkWrapper", "AttributeNetworkWrapper\AttributeNetworkWrapper.csproj", "{5BBCD196-5A13-4B33-9FFD-2EB3E9F615F6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1} = {CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network-Test.Fody", "Network-Test.Fody\Network-Test.Fody.csproj", "{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttributeNetworkWrapper.Fody", "AttributeNetworkWrapper.Fody\AttributeNetworkWrapper.Fody.csproj", "{CEE4DEBB-0977-4ECF-ABD0-3241647AB8E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1E55C848-F124-4806-A7F4-4674A6DEF831}"
 EndProject

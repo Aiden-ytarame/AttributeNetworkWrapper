@@ -1,6 +1,6 @@
 using System;
 
-namespace Network_Test.Core;
+namespace AttributeNetworkWrapper.Core;
 
 public class NullServerException : Exception
 {

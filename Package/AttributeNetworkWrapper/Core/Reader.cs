@@ -1,8 +1,7 @@
 using System;
 using System.IO;
-using System.Text;
 
-namespace Network_Test.Core;
+namespace AttributeNetworkWrapper.Core;
 
 public class NetworkReader : IDisposable
 {
@@ -27,7 +26,7 @@ public class NetworkReader : IDisposable
 
 public static class NetReaderExtensions
 {
-    public static bool ReadBoolean(this NetworkReader reader) => reader.ReadBoolean();
+    public static bool ReadBoolean(this NetworkReader reader) => reader.BinaryReader.ReadBoolean();
     
     public static byte ReadByte(this NetworkReader reader) => reader.BinaryReader.ReadByte();
     public static sbyte ReadSByte(this NetworkReader reader) => reader.BinaryReader.ReadSByte();

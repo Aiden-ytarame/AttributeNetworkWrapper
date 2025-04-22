@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AttributeNetworkWrapper;
+using AttributeNetworkWrapper.Core;
+using AttributeNetworkWrapper.Fody;
 using Fody;
-using Network_Test;
-using Network_Test.Core;
-using Tests;
 using Xunit;
+
+namespace Tests;
 
 public class WeaverTests
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using Mono.Cecil;
 using Mono.Collections.Generic;
 
-namespace Network_Test.Fody.Extensions
+namespace AttributeNetworkWrapper.Fody
 {
     public static class Extensions
     {

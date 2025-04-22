@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace Network_Test.Core;
+namespace AttributeNetworkWrapper.Core;
 
 public static class RpcHandler
 {
@@ -25,7 +25,16 @@ public static class RpcHandler
 
     static RpcHandler()
     {
-        var registerRpcs = Type.GetType("Network_Test.RpcFuncRegistersGenerated");
+        Type registerRpcs = null;
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            registerRpcs = assembly.GetType("AttributeNetworkWrapper.RpcFuncRegistersGenerated");
+            if (registerRpcs != null)
+            {
+                break;
+            }
+        }
+
         if (registerRpcs == null)
         {
             throw new ApplicationException("RpcFuncRegistersGenerated wasn't found, something terrible went wrong");

@@ -1,6 +1,5 @@
 using System;
-using Network_Test;
-using Network_Test.Core.Rpc;
+using AttributeNetworkWrapper.Core;
 
 namespace Tests;
 

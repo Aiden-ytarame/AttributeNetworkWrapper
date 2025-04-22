@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Fody;
 using Mono.Cecil;
-using Network_Test.Fody.Extensions;
 
-namespace Network_Test.Fody.Core
+namespace AttributeNetworkWrapper.Fody.Core
 {
     public static class ReadersWriters
     {

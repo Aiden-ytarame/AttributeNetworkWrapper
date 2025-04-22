@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Network-Test.Fody\Network-Test.Fody.csproj" />
-      <ProjectReference Include="..\Network-Test\Network-Test.csproj" />
+      <ProjectReference Include="..\AttributeNetworkWrapper.Fody\AttributeNetworkWrapper.Fody.csproj" />
+      <ProjectReference Include="..\AttributeNetworkWrapper\AttributeNetworkWrapper.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,6 @@
 using System;
-using Network_Test.Core.Rpc;
 
-namespace Network_Test.Core
+namespace AttributeNetworkWrapper.Core
 {
     public abstract class NetworkConnection
     {

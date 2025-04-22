@@ -1,8 +1,6 @@
 using System;
-using Network_Test.Core;
-using Network_Test.Core.Rpc;
 
-namespace Network_Test
+namespace AttributeNetworkWrapper.Core
 {
     public abstract class Transport
     {

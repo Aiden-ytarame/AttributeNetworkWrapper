@@ -1,5 +1,4 @@
-﻿using Network_Test.Core;
-using Network_Test.Core.Rpc;
+﻿using AttributeNetworkWrapper.Core;
 using Console = System.Console;
 
 namespace FodyTest;

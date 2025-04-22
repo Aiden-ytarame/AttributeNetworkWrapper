@@ -1,4 +1,4 @@
-namespace Network_Test.Core;
+namespace AttributeNetworkWrapper.Core;
 
 public static class Extensions
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Network_Test.Core.Rpc
+namespace AttributeNetworkWrapper.Core
 {
     public enum SendType : ushort
     {

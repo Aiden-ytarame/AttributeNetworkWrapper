@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Network_Test.Core;
-using Network_Test.Core.Rpc;
+using AttributeNetworkWrapper.Core;
 
-namespace Network_Test
+namespace AttributeNetworkWrapper
 {
     public class NetworkManager
     {
@@ -168,6 +167,7 @@ namespace Network_Test
             if (connection != null)
             {
                 connection.SendRpcToTransport(data, sendType);
+                return;
             }
             
             throw new ArgumentException("Tried to send rpc to invalid connection ID!");
