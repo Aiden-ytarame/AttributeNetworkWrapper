@@ -1,6 +1,8 @@
 # AttributeNetworkWrapper
 
 This is a Fody weaver addin, which runs on build to modify the IL of the project.
+ 
+A lot of this took inspiration from Mirror, the networking library for unity.
 
 ## Use
 
