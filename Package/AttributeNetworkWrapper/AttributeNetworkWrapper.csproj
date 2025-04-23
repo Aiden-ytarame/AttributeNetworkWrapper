@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <OutputPath>$(SolutionDir)../nugets</OutputPath>
-        <Version>1.0.4</Version>
+        <Version>1.0.0</Version>
         <LangVersion>latest</LangVersion>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <Title>AttributeNetworkWrapper.Fody</Title>
@@ -12,6 +12,8 @@
         <RepositoryUrl>https://github.com/Aiden-ytarame/AttributeNetworkWrapper/</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>ILWeaving, Fody, Cecil, AOP, Networking</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +21,9 @@
         <PrivateAssets>none</PrivateAssets>
       </PackageReference>
       <PackageReference Include="FodyPackaging" Version="6.8.2" PrivateAssets="All"/>
+        
+        <None Include="../../LICENSE" Pack="true" PackagePath="\"/>
+        <None Include="../../README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
    
